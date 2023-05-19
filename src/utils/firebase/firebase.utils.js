@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -57,10 +58,25 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   return;
 };
 
+export const getUserDocumentFromUID = async (uid) => {
+  const userDocRef = doc(db, "users", uid);
+  const userSnapshot = await getDoc(userDocRef);
+  if (!userSnapshot.exists()) {
+    alert("User not found in database");
+    return;
+  }
+  return userSnapshot.data();
+};
+
 export const signupUserAuthWithUserNameAndPassword = async (
   userName,
   password
 ) => {
   if (!userName || !password) return;
   return await createUserWithEmailAndPassword(auth, userName, password);
+};
+
+export const signInUserWithEmailAndPassword = async (userName, password) => {
+  if (!userName || !password) return;
+  return await signInWithEmailAndPassword(auth, userName, password);
 };
