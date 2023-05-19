@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
-import "./sign-up-form.styles.scss";
 import {
   signupUserAuthWithUserNameAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
+
+import "./sign-up-form.styles.scss";
 
 const defaultFormFields = {
   displayName: "",
@@ -38,7 +39,6 @@ const SignUpForm = () => {
         password
       );
       user.displayName = displayName;
-      console.log(user);
       await createUserDocumentFromAuth(user);
       resetFormFields();
     } catch (err) {
