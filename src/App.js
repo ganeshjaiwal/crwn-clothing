@@ -7,11 +7,12 @@ import Shop from "./components/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.componet";
 
 const App = () => {
+  console.log("INIT");
   return (
     <Routes>
       <Route path="/" element={<Navigation />}>
         <Route index element={<Home />} />
-        <Route path="shop" element={<Shop />} />
+        <Route path="shop/*" element={<Shop />} />
         <Route path="auth" element={<Authentication />} />
         <Route path="checkout" element={<Checkout />} />
       </Route>
