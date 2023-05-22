@@ -17,6 +17,7 @@ export const UserProvider = ({ children }) => {
     });
 
     return unsubscribe;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [currentUser, setCurrentUser] = useState(null);
   const value = { currentUser, setCurrentUser };
