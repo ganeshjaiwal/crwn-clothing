@@ -12,7 +12,6 @@ import {
   NavigationContainer,
   NavLinks,
   NavLink,
-  LogoContainer,
 } from "./navigation.styles.jsx";
 
 const Navigation = () => {

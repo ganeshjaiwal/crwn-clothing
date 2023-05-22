@@ -32,7 +32,10 @@ const removeProductFromCart = (cartItems, product, removeProduct) => {
   // Delete product completely
   if (removeProduct) {
     return cartItems.filter((item) => {
-      if (item.id !== product.id) return true;
+      if (item.id !== product.id) {
+        return true;
+      }
+      return false;
     });
   }
 
