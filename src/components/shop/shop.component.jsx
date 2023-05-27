@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux";
 import CategoriesPreview from "../../routes/categories-preview/categories-preview.component";
 import Category from "../../routes/category/category.component";
 import { useEffect } from "react";
-import { fetchCategoriesAsync } from "../../store/categories/categories.actions";
+import {
+  /*fetchCategoriesAsync,*/ fetchCategoriesStart,
+} from "../../store/categories/categories.actions";
 // import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
 
 const Shop = () => {
@@ -16,7 +18,8 @@ const Shop = () => {
     // };
 
     // getData();
-    dispatch(fetchCategoriesAsync());
+    // dispatch(fetchCategoriesAsync());
+    dispatch(fetchCategoriesStart());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
