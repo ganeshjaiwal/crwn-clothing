@@ -9,6 +9,7 @@ import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store, persister } from "./store/store";
+import { stripePromise } from "./utils/stripe/stripe.utils";
 
 // import { UserProvider } from "./context/user.context";
 // import { CategoriesProvider } from "./context/categories.context";
@@ -23,7 +24,7 @@ root.render(
           {/* <UserProvider> */}
           {/* <CategoriesProvider> */}
           {/* <CartProvider> */}
-          <Elements>
+          <Elements stripe={stripePromise}>
             <App />
           </Elements>
           {/* </CartProvider> */}
