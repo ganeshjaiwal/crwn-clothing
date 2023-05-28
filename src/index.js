@@ -6,7 +6,8 @@ import { Provider } from "react-redux";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { store } from "./store/store";
+import { persister, store } from "./store/store";
+import { PersistGate } from "redux-persist/integration/react";
 // import { UserProvider } from "./context/user.context";
 // import { CategoriesProvider } from "./context/categories.context";
 // import { CartProvider } from "./context/cart.context";
@@ -15,6 +16,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      {/* <PersistGate persistor={persister}> */}
       <BrowserRouter>
         {/* <UserProvider> */}
         {/* <CategoriesProvider> */}
@@ -24,6 +26,7 @@ root.render(
         {/* </CategoriesProvider> */}
         {/* </UserProvider> */}
       </BrowserRouter>
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>
 );

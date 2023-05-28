@@ -11,11 +11,15 @@ import {
   Value,
   RemoveButton,
 } from "./checkout-item.styles.jsx";
+import { selectCartItems } from "../../store/cart/cart.selector.js";
 import {
   addItemToCart,
   removeItemFromCart,
-} from "../../store/cart/cart.actions.js";
-import { selectCartItems } from "../../store/cart/cart.selector.js";
+} from "../../store/cart/cart.reducer.js";
+// import {
+//   addItemToCart,
+//   removeItemFromCart,
+// } from "../../store/cart/cart.actions.js";
 // import { CartContext } from "../../context/cart.context";
 
 const CheckoutItem = ({ product }) => {
@@ -25,15 +29,20 @@ const CheckoutItem = ({ product }) => {
   const cartItems = useSelector(selectCartItems);
 
   const reduceQuantityByOne = () => {
-    dispatch(removeItemFromCart(cartItems, product, product.quantity === 1));
+    dispatch(
+      removeItemFromCart({ product, removeProduct: product.quantity === 1 })
+    );
+    // dispatch(removeItemFromCart(cartItems, product, product.quantity === 1));
   };
 
   const removeProductFromCart = () => {
-    dispatch(removeItemFromCart(cartItems, product, true));
+    dispatch(removeItemFromCart({ product, removeProduct: true }));
+    // dispatch(removeItemFromCart(cartItems, product, true));
   };
 
   const incrementQuantityByOne = () => {
-    dispatch(addItemToCart(cartItems, product));
+    dispatch(addItemToCart(product));
+    // dispatch(addItemToCart(cartItems, product));
   };
 
   return (

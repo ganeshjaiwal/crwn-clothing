@@ -4,22 +4,23 @@ import { useDispatch } from "react-redux";
 import CategoriesPreview from "../../routes/categories-preview/categories-preview.component";
 import Category from "../../routes/category/category.component";
 import { useEffect } from "react";
-import {
-  /*fetchCategoriesAsync,*/ fetchCategoriesStart,
-} from "../../store/categories/categories.actions";
-// import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
+// import {
+//   /*fetchCategoriesAsync,*/ fetchCategoriesStart,
+// } from "../../store/categories/categories.actions";
+import { setCategories } from "../../store/categories/categories.reducer";
+import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
 
 const Shop = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    // const getData = async () => {
-    //   const categories = await getCategoriesAndDocuments();
-    //   dispatch(setCategories(categories));
-    // };
+    const getData = async () => {
+      const categories = await getCategoriesAndDocuments();
+      dispatch(setCategories(categories));
+    };
 
-    // getData();
+    getData();
     // dispatch(fetchCategoriesAsync());
-    dispatch(fetchCategoriesStart());
+    // dispatch(fetchCategoriesStart());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

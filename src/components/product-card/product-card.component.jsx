@@ -9,7 +9,8 @@ import {
   ProductCardContainer,
   AddToCartButton,
 } from "./product-card.styles";
-import { addItemToCart } from "../../store/cart/cart.actions";
+// import { addItemToCart } from "../../store/cart/cart.actions";
+import { addItemToCart } from "../../store/cart/cart.reducer";
 import { selectCartItems } from "../../store/cart/cart.selector";
 // import { CartContext } from "../../context/cart.context";
 
@@ -20,7 +21,8 @@ const ProductCard = ({ product }) => {
   // const { addItemToCart } = useContext(CartContext);
 
   const addItemToCartHandler = () => {
-    dispatch(addItemToCart(cartItem, product));
+    dispatch(addItemToCart(product));
+    // dispatch(addItemToCart(cartItem, product));
   };
 
   return (

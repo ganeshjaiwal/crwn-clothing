@@ -10,7 +10,8 @@ import {
 } from "./cart-dropdown.styles.jsx";
 import CartItem from "../cart-item/cart-item.component";
 import { selectCartItems } from "../../store/cart/cart.selector";
-import { setIsCartVisble } from "../../store/cart/cart.actions";
+import { setIsCartVisble } from "../../store/cart/cart.reducer";
+// import { setIsCartVisble } from "../../store/cart/cart.actions";
 // import { CartContext } from "../../context/cart.context";
 
 const CartDropdown = () => {

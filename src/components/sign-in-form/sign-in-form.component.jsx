@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-// import {
-//   // signInWithGooglePopup,
-//   // createUserDocumentFromAuth,
-//   signInUserWithEmailAndPassword,
-//   getUserDocumentFromUID,
-// } from "../../utils/firebase/firebase.utils";
+import {
+  signInWithGooglePopup,
+  createUserDocumentFromAuth,
+  signInUserWithEmailAndPassword,
+  getUserDocumentFromUID,
+} from "../../utils/firebase/firebase.utils";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 
 import { ButtonContainer, SignInContainer } from "./sign-in-form.style.jsx";
-import {
-  emailSignInStart,
-  googleSignInStart,
-} from "../../store/user/user.actions";
+// import {
+//   emailSignInStart,
+//   googleSignInStart,
+// } from "../../store/user/user.actions";
 
 const defaultFormFields = {
   userName: "",
@@ -34,9 +34,9 @@ const SignInForm = () => {
   const handleSignIn = async (event) => {
     event.preventDefault();
     try {
-      dispatch(emailSignInStart(userName, password));
-      // const { user } = await signInUserWithEmailAndPassword(userName, password);
-      // const userDetails = await getUserDocumentFromUID(user.uid);
+      // dispatch(emailSignInStart(userName, password));
+      const { user } = await signInUserWithEmailAndPassword(userName, password);
+      const userDetails = await getUserDocumentFromUID(user.uid);
       // console.log(userDetails);
     } catch (err) {
       switch (err.code) {
@@ -55,9 +55,9 @@ const SignInForm = () => {
 
   const signInWithGoogleHandler = async () => {
     try {
-      dispatch(googleSignInStart());
-      // const { user } = await signInWithGooglePopup();
-      // await createUserDocumentFromAuth(user);
+      // dispatch(googleSignInStart());
+      const { user } = await signInWithGooglePopup();
+      await createUserDocumentFromAuth(user);
     } catch (error) {
       console.log(error);
     }
