@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
-import {
-  signupUserAuthWithUserNameAndPassword,
-  createUserDocumentFromAuth,
-} from "../../utils/firebase/firebase.utils";
+// import {
+//   signupUserAuthWithUserNameAndPassword,
+//   createUserDocumentFromAuth,
+// } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
 import { SignUpContainer } from "./sign-up-form.styles.jsx";
+import { emailSignUpStart } from "../../store/user/user.actions";
 
 const defaultFormFields = {
   displayName: "",
@@ -19,6 +21,7 @@ const defaultFormFields = {
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -34,12 +37,13 @@ const SignUpForm = () => {
       return;
     }
     try {
-      const { user } = await signupUserAuthWithUserNameAndPassword(
-        email,
-        password
-      );
-      user.displayName = displayName;
-      await createUserDocumentFromAuth(user);
+      // const { user } = await signupUserAuthWithUserNameAndPassword(
+      //   email,
+      //   password
+      // );
+      // user.displayName = displayName;
+      // await createUserDocumentFromAuth(user);
+      dispatch(emailSignUpStart(displayName, email, password));
       resetFormFields();
     } catch (err) {
       console.log("Error while signup with email and password: ", err.message);

@@ -65,8 +65,7 @@ export const createUserDocumentFromAuth = async (userAuth) => {
       console.log("Error creating User: ", err.message);
     }
   }
-
-  return;
+  return userSnapshot;
 };
 
 export const getUserDocumentFromUID = async (uid) => {
@@ -127,4 +126,17 @@ export const getCategoriesAndDocuments = async () => {
   // }, []);
 
   // return categoryMap;
+};
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });
 };
