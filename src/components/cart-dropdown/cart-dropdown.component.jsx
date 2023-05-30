@@ -24,8 +24,7 @@ const CartDropdown = () => {
     dispatch(setIsCartVisble(false));
     navigate("/checkout");
   };
-
-  console.log("Cart Items: ", cartItems);
+  
   return (
     <CartDropdownContainer>
       <CartItems>
